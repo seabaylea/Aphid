@@ -57,10 +57,10 @@ open class Aphid {
             socket = try Socket.create(family: .inet6, type: .stream, proto: .tcp)
         }
         
-        try socket!.setBlocking(mode: false)
+        //try socket!.setBlocking(mode: false)
         
         try socket!.connect(to: config.host, port: config.port)
-
+        config.status = .connected
         requestHandler(packet: ConnectPacket()) {
             
             self.startTimer()
